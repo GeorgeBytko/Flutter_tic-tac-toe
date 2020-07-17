@@ -133,6 +133,9 @@ class _TicTacToeScaffoldState extends State<TicTacToeScaffold> {
     });
   }
   void _makeMove(int i, int j) {
+    if (_gameField[_GameFieldHelper.createRiCjKey(i, j)] != '') {
+      return;
+    }
     _socketHelper.emitEvent('make.move',{
       'position': _GameFieldHelper.createRiCjKey(i, j),
       'symbol': _symbol
